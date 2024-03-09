@@ -1,4 +1,4 @@
-class Medication {
+export class Medication {
     public name: string;
     public dose: number;
     public recurring: boolean;
