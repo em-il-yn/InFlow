@@ -6,7 +6,7 @@ import BottomNav from "./components/BottomNav";
 import "./index.css";
 import DateCalendarValue from "./components/DateCalendarValue"; 
 import FixedButton from "./components/FixedButton"; 
-
+import TextEntryBox from "./components/TextEntryBox";
 
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
     <div>
       <Header />
       <DateCalendarValue />
+      <TextEntryBox />
       <BottomNav />
       <FixedButton />
     </div>
