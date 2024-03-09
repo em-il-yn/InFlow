@@ -4,7 +4,9 @@ import Note from "./components/Notes";
 import Header from "./components/Header";
 import BottomNav from "./components/BottomNav";
 import "./index.css";
-import DateCalendarValue from "./components/DateCalendarValue"; // Import the calendar component
+import DateCalendarValue from "./components/DateCalendarValue"; 
+import FixedButton from "./components/FixedButton"; 
+
 
 
 const App = () => {
@@ -13,6 +15,7 @@ const App = () => {
       <Header />
       <DateCalendarValue />
       <BottomNav />
+      <FixedButton />
     </div>
   );
 };
