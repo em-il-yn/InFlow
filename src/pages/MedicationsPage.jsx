@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const AddEntryPage = () => {
+const MedicationsPage = () => {
   const [date, setDate] = useState("");
   const [medicationName, setMedicationName] = useState('');
   const [medicationDose, setMedicationDose] = useState('');
   const [medicationRecurring, setMedicationRecurring] = useState(false);
   const [medications, setMedications] = useState([]);
+  const [medicationsByDate, setMedicationsByDate] = useState({});
 
   const handleDateChange = (event) => {
     setDate(event.target.value);
@@ -19,8 +20,14 @@ const AddEntryPage = () => {
       dose: medicationDose,
       recurring: medicationRecurring
     };
+    // Update medications for the selected date
+    const updatedMedications = medicationsByDate[date] ? [...medicationsByDate[date]] : [];
+    updatedMedications.push(newMedication);
 
-    setMedications([...medications, newMedication]);
+    setMedicationsByDate({
+      ...medicationsByDate,
+      [date]: updatedMedications,
+    });
 
     setMedicationName('');
     setMedicationDose('');
@@ -33,20 +40,21 @@ const AddEntryPage = () => {
       return;
     }
 
+    // Adjusted to send the medications for the current date
     const entryData = {
       id: date,
       details: {
-        medications,
+        medications: medicationsByDate[date],
       },
     };
 
     axios.post('http://localhost:3001/notes', entryData)
-      .then(response => {
-        console.log('Data saved:', response.data);
-      })
-      .catch(error => {
-        console.error('There was an error saving the entry:', error);
-      });
+        .then(response => {
+          console.log('Data saved:', response.data);
+        })
+        .catch(error => {
+          console.error('There was an error saving the entry:', error);
+        });
   };
 
   return (
@@ -95,8 +103,8 @@ const AddEntryPage = () => {
           </label>
           <button className="button-styles" type="submit">Add Medication</button>
         </div>
-       
-        
+
+
       </form>
       </div>
 
@@ -118,4 +126,4 @@ const AddEntryPage = () => {
   );
 };
 
-export default AddEntryPage;
+export default MedicationsPage;
