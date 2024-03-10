@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5", // Compiles to ES5 for broader browser compatibility
+    "lib": ["dom", "dom.iterable", "esnext"], // Includes DOM and ESNext features
+    "allowJs": true, // Allows JavaScript files to be compiled.
+    "skipLibCheck": true, // Skips type checking of declaration files.
+    "esModuleInterop": true, // Enables ES6 module interoperability
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    "strict": true, // Enables all strict type-checking options
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
+    "module": "esnext", // Use ESNext module code generation
+    "moduleResolution": "node", // Module resolution strategy
+    "resolveJsonModule": true, // Allows importing '.json' files
+    "isolatedModules": true, // Ensures each file can be safely transpiled without relying on other imports
+    "noEmit": true, // Do not emit outputs (since Babel or another tool may be used to transpile)
+    "jsx": "react-jsx", // Support JSX in .tsx files: "react", "react-jsx", "react-jsxdev"
+  },
+  "include": [
+    "src/**/*" // Adjust this to include your source files
+  ],
+  "exclude": ["node_modules", "build", "scripts", "webpack.config.js", "jest.config.js", "src/**/*.test.ts"]
+}
