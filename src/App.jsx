@@ -20,37 +20,39 @@ const App = () => {
   const [value, setValue] = useState(0); 
 
   return (
-    <ThemeProvider theme={customTheme}>
-      <Router>
-          <Routes>
-            <Route path="/calendar" element={<CalendarPage />} />
-            <Route path="/data" element={<DataPage />} />
-            <Route path="/medications" element={<MedicationsPage />} />
-            <Route path="/addentry" element={<AddEntryPage />} />
-          </Routes>
+    <div className="app-container"> 
+      <ThemeProvider theme={customTheme}>
+        <Router>
+            <Routes>
+              <Route path="/calendar" element={<CalendarPage />} />
+              <Route path="/data" element={<DataPage />} />
+              <Route path="/medications" element={<MedicationsPage />} />
+              <Route path="/addentry" element={<AddEntryPage />} />
+            </Routes>
 
-          <div>
-            <Header />
-            <BottomNavigation
-              showLabels
-              value={value}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
-              className="bottom-nav"
-            >
-              <BottomNavigationAction label="Calendar" icon={<CalendarMonthTwoToneIcon />} component={Link} to="/calendar" />
-              <BottomNavigationAction label="Data" icon={<AutoGraphTwoToneIcon />} component={Link} to="/data" />
-              <BottomNavigationAction label="Medications" icon={<MedicationTwoToneIcon />} component={Link} to="/medications" />
-            </BottomNavigation>
-            <div className="fixed-button-container">
-              <IconButton aria-label="add" size="medium" component={Link} to="/addentry">
-                <AddCircleTwoToneIcon fontSize="inherit" />
-              </IconButton>
+            <div>
+              <Header />
+              <BottomNavigation
+                showLabels
+                value={value}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+                className="bottom-nav"
+              >
+                <BottomNavigationAction label="Calendar" icon={<CalendarMonthTwoToneIcon />} component={Link} to="/calendar" />
+                <BottomNavigationAction label="Data" icon={<AutoGraphTwoToneIcon />} component={Link} to="/data" />
+                <BottomNavigationAction label="Medications" icon={<MedicationTwoToneIcon />} component={Link} to="/medications" />
+              </BottomNavigation>
+              <div className="fixed-button-container">
+                <IconButton aria-label="add" size="medium" component={Link} to="/addentry">
+                  <AddCircleTwoToneIcon fontSize="inherit" />
+                </IconButton>
+              </div>
             </div>
-          </div>
-      </Router>
-    </ThemeProvider>
+        </Router>
+      </ThemeProvider>
+    </div>
   );
 };
 

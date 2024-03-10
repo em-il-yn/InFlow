@@ -6,12 +6,8 @@ import '../index.css';
 
 export default function FirstComponent() {
   return (
-    <div className="centered-container"> {/* Add a container with centering styles */}
-      <div className="calendar-container"> {/* Container for DateCalendar */}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateCalendar />
         </LocalizationProvider>
-      </div>
-    </div>
   );
 }

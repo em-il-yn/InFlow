@@ -1,125 +1,121 @@
-import {useEffect, useState} from "react";
-import {Medication} from "../components/Medication.jsx";
+import React, { useState } from "react";
 import axios from "axios";
 
-const MedicationsPage = () => {
-    const [medications, setMedications] = useState([]);
-    // States for form inputs
-    const [name, setName] = useState('');
-    const [dose, setDose] = useState('');
-    const [recurring, setRecurring] = useState(false);
+const AddEntryPage = () => {
+  const [date, setDate] = useState("");
+  const [medicationName, setMedicationName] = useState('');
+  const [medicationDose, setMedicationDose] = useState('');
+  const [medicationRecurring, setMedicationRecurring] = useState(false);
+  const [medications, setMedications] = useState([]);
 
-    // axios.get('http://localhost:3001/notes')
-    //     .then(response => {
-    //         const notes = response.data
-    //setNotes(response.data)
-    //ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes}
-        //     })
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
+  };
 
-    // Mock function to simulate fetching medications from an API
-    const fetchMedications = () => {
-        return [
-            new Medication('Amoxicillin', '500mg', true),
-            new Medication('Ibuprofen', '200mg', false),
-        ];
-
-        // addNote = event => {
-        //     event.preventDefault()
-        //     const noteObject = {
-        //         content: newNote,
-        //         important: Math.random() < 0.5,
-        //     }
-        //
-        //     axios
-        //         .post('http://localhost:3001/notes', noteObject)
-        //         .then(response => {
-        //             console.log(response)
-        //         })
-        // }
+  const addMedication = (event) => {
+    event.preventDefault();
+    const newMedication = {
+      name: medicationName,
+      dose: medicationDose,
+      recurring: medicationRecurring
     };
 
-    useEffect(() => {
-        const meds = fetchMedications();
-        setMedications(meds);
-    }, []);
+    setMedications([...medications, newMedication]);
 
-    const addMedication = () => {
-        // Construct the new medication object from the state
-        const medicationData = { name, dose, recurring };
+    setMedicationName('');
+    setMedicationDose('');
+    setMedicationRecurring(false);
+  };
 
-        // Post the new medication data to the server
-        axios.post('http://localhost:3001/notes', medicationData)
-            .then(response => {
-                // Assuming response.data contains the newly added medication object
-                // with all necessary properties (including any id if applicable)
-                const updatedMedication = response.data;
+  const handleDoneClick = () => {
+    if (!date) {
+      console.error('Date is required');
+      return;
+    }
 
-                // Update the medications state with the new medication
-                // This will trigger a re-render and should update the table
-                setMedications(currentMeds => [...currentMeds, updatedMedication]);
-
-                // Reset the form fields
-                setName('');
-                setDose('');
-                setRecurring(false);
-            })
-            .catch(error => {
-                console.error("There was an error saving the medication: ", error);
-            });
+    const entryData = {
+      id: date,
+      details: {
+        medications,
+      },
     };
 
-    return (
-        <div>
-            <p>I am the medications page!</p>
-            {/* Form for adding new medication */}
-            <form onSubmit={addMedication}>
-                <input
-                    type="text"
-                    placeholder="Medication Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Dose"
-                    value={dose}
-                    onChange={(e) => setDose(e.target.value)}
-                    required
-                />
-                <label>
-                    Recurring:
-                    <input
-                        type="checkbox"
-                        checked={recurring}
-                        onChange={(e) => setRecurring(e.target.checked)}
-                    />
-                </label>
-                <button type="button" onClick={addMedication}>Add New Medication</button>
-            </form>
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Dose</th>
-                    <th>Recurring</th>
-                    <th>Frequency (hours)</th>
-                    <th>Dosage Instructions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {medications.map((medication, index) => (
-                    <tr key={index}>
-                        <td>{medication.name}</td>
-                        <td>{medication.dose}</td>
-                        <td>{medication.recurring ? 'Yes' : 'No'}</td>
-                        {/* Ensure other cells are correctly filled */}
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+    axios.post('http://localhost:3001/notes', entryData)
+      .then(response => {
+        console.log('Data saved:', response.data);
+      })
+      .catch(error => {
+        console.error('There was an error saving the entry:', error);
+      });
+  };
+
+  return (
+    <div className="medications-container scrollable-content" style={{ maxWidth: '370px', margin: 'auto' }}>
+  <div className="add-entry-container">
+  <div class="rounded-box-meds">
+    <div className="input-group">
+      <label htmlFor="date">Date:</label>
+      <input
+        type="date"
+        id="date"
+        value={date}
+        onChange={handleDateChange}
+      />
+    </div>
+
+    <div className="medication-section">
+      <form onSubmit={addMedication}>
+
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Medication Name"
+            value={medicationName}
+            onChange={(e) => setMedicationName(e.target.value)}
+            required
+          />
         </div>
-    );
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Dose"
+            value={medicationDose}
+            onChange={(e) => setMedicationDose(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>
+            Recurring:
+            <input
+              type="checkbox"
+              checked={medicationRecurring}
+              onChange={(e) => setMedicationRecurring(e.target.checked)}
+            />
+          </label>
+          <button className="button-styles" type="submit">Add Medication</button>
+        </div>
+       
+        
+      </form>
+      </div>
+
+      {medications.length > 0 && (
+        <ul>
+          {medications.map((med, index) => (
+            <li key={index}>{`${med.name}, ${med.dose}, Recurring: ${med.recurring ? 'Yes' : 'No'}`}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <div className="done-button">
+      <button className="button-styles" onClick={handleDoneClick}>Done</button>
+    </div>
+  </div>
+</div>
+
+  );
 };
 
-export default MedicationsPage;
+export default AddEntryPage;

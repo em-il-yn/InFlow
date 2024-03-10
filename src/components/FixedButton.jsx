@@ -5,7 +5,7 @@ import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 const FixedButton = () => {
   return (
     <div className="fixed-button-container">
-      <IconButton aria-label="add" size="medium">
+      <IconButton aria-label="add" size="large">
         <AddCircleTwoToneIcon fontSize="inherit" />
       </IconButton>
     </div>
