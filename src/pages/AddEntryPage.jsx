@@ -40,19 +40,17 @@ const AddEntryPage = () => {
     }
 
     const entryData = {
-      id: date, // Use date as the unique identifier for each entry
+      id: date,
       details: {
-        flow,
-        intensity,
         selectedOptions,
         medications,
       },
     };
 
-    axios.post('http://localhost:3001/notes', entryData)
+    axios.put(`http://localhost:3001/notes/${date}`, entryData)
         .then(response => {
-          console.log('Data saved:', response.data);
-          // Here you can implement post-save logic, e.g., clearing form fields, showing success message, etc.
+          console.log('Data saved or updated:', response.data);
+          // Implement post-save logic as needed, e.g., clearing form fields, showing success message
         })
         .catch(error => {
           console.error('There was an error saving the entry:', error);
