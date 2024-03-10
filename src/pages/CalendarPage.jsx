@@ -1,11 +1,10 @@
 import React from "react";
-import DateCalendarValue from "../components/DateCalendarValue"; 
-
+import DateCalendarValue from "../components/DateCalendarValue";
 
 const CalendarPage = () => {
   return (
-    <div>
-        <DateCalendarValue />
+    <div className="calendar-container">
+      <DateCalendarValue />
     </div>
   );
 };
