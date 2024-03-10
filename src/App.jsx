@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
-import FixedButton from "./components/FixedButton"; 
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
@@ -9,6 +8,9 @@ import MedicationTwoToneIcon from "@mui/icons-material/MedicationTwoTone";
 import CalendarPage from "./pages/CalendarPage"; 
 import DataPage from "./pages/DataPage";
 import MedicationsPage from "./pages/MedicationsPage";
+import AddEntryPage from "./pages/AddEntryPage"
+import IconButton from '@mui/material/IconButton';
+import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import "./index.css"; 
@@ -23,6 +25,7 @@ const App = () => {
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/data" element={<DataPage />} />
         <Route path="/medications" element={<MedicationsPage />} />
+        <Route path="/addentry" element={<AddEntryPage />} />
       </Routes>
 
       <div>
@@ -39,7 +42,11 @@ const App = () => {
           <BottomNavigationAction label="Data" icon={<AutoGraphTwoToneIcon />} component={Link} to="/data" />
           <BottomNavigationAction label="Medications" icon={<MedicationTwoToneIcon />} component={Link} to="/medications" />
         </BottomNavigation>
-        <FixedButton />
+        <div className="fixed-button-container">
+          <IconButton aria-label="add" size="medium" component={Link} to="/addentry">
+            <AddCircleTwoToneIcon fontSize="inherit" />
+          </IconButton>
+        </div>
       </div>
     </Router>
   );
