@@ -83,3 +83,19 @@ button:focus-visible {
   z-index: 1000;
 }
 
+.css-cyfsxc-MuiPickersCalendarHeader-labelContainer {
+  color: #000000 !important;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; 
+}
+
+.header-title {
+  margin: 0;
+  color: black;
+  font-family: 'MuseoModerno', sans-serif; 
+}
