@@ -15,30 +15,28 @@
             "name": "VeryHappyPill",
             "dose": "88",
             "recurring": false
-          }
-        ]
-      }
-    },
-    {
-      "id": "2024-03-09",
-      "details": {
-        "flow": "",
-        "intensity": "",
-        "selectedOptions": [
-          "Heavy",
-          "Happy",
-          "Body Ache"
-        ],
-        "medications": [
-          {
-            "name": "VeryHappyPill",
-            "dose": "88",
-            "recurring": false
           },
           {
             "name": "VeryHappyPill2",
             "dose": "9",
             "recurring": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "2024-03-06",
+      "details": {
+        "selectedOptions": [
+          "Light",
+          "Sad",
+          "Cramps"
+        ],
+        "medications": [
+          {
+            "name": "HopefullyFixedDataPill",
+            "dose": "5",
+            "recurring": false
           }
         ]
       }
