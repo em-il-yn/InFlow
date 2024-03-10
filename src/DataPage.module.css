@@ -1,0 +1,32 @@
+/* DataPage.module.css */
+
+.checkbox {
+    display: none; /* Hide the default checkbox */
+}
+
+.checkbox + .label {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    background-color: white; /* Background color when checkbox is not selected */
+    border: 2px solid #6868ac;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+
+.checkbox:checked + .label {
+    background-color: #6868ac; /* Background color when checkbox is selected */
+    color: #6868ac;
+}
+
+
+.tableContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tableContainer > table {
+    width: 48%; /* Adjust the width of each table */
+    border-collapse: collapse;
+    margin-left: 2cm; /* Push tables 2cm off the left side */
+}
