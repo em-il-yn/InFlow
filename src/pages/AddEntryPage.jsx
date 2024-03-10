@@ -5,6 +5,7 @@ const AddEntryPage = () => {
   const [flow, setFlow] = useState("");
   const [intensity, setIntensity] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [date, setDate] = useState(""); // State for the date
 
   const handleFlowChange = (event) => {
     setFlow(event.target.value);
@@ -22,6 +23,10 @@ const AddEntryPage = () => {
         return [...prevSelectedOptions, option];
       }
     });
+  };
+
+  const handleDateChange = (event) => { // Function to handle date change
+    setDate(event.target.value);
   };
 
   const handleDoneClick = () => {
@@ -70,6 +75,17 @@ const AddEntryPage = () => {
 
   return (
 <div className="entry-container scrollable-content">
+  {/* Date selection input, styled and positioned at the start similar to the MedicationsPage */}
+  <div className="input-group" style={{ margin: '20px 0' }}>
+    <label htmlFor="date">Date:</label>
+    <input
+        type="date"
+        id="date"
+        value={date}
+        onChange={handleDateChange}
+        style={{ marginLeft: '10px' }}
+    />
+  </div>
   {/* Flow 1 */}
   <div class="rounded-box">
   <div className="entry-text">FLOW</div>

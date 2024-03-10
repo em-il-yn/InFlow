@@ -14,7 +14,9 @@ import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 import { customTheme } from './theme.js'; 
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import "./index.css"; 
+import "./index.css";
+
+// our team used assistance of Chat GPT in cretaing and testing this app
 
 const App = () => {
   const [value, setValue] = useState(0); 
