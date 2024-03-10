@@ -6,6 +6,7 @@ export class DateDetails {
     public cycle?: Period;
     public medi?: Medication;
     public other?: any[];
+    public pain: any;
 
     constructor(day: Date = new Date(), cycle?: Period, medi?: Medication) {
         this._day = day;
