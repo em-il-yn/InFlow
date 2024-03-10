@@ -1,91 +1,47 @@
 {
   "notes": [
     {
-      "id": "1",
-      "content": "HTML is easy",
-      "important": true
+      "id": "2024-03-09",
+      "details": {
+        "flow": "",
+        "intensity": "",
+        "selectedOptions": [
+          "Heavy",
+          "Happy",
+          "Body Ache"
+        ],
+        "medications": [
+          {
+            "name": "VeryHappyPill",
+            "dose": "88",
+            "recurring": false
+          }
+        ]
+      }
     },
     {
-      "id": "2",
-      "content": "Browser can execute only JavaScript",
-      "important": false
-    },
-    {
-      "id": "3",
-      "content": "GET and POST are the most important methods of HTTP protocol",
-      "important": false
-    },
-    {
-      "id": "5e8b",
-      "content": "hey",
-      "important": false
-    },
-    {
-      "id": "2f0f",
-      "content": "hello",
-      "important": false
-    },
-    {
-      "id": "4f90",
-      "name": "tylenol",
-      "dose": "50",
-      "recurring": true
-    },
-    {
-      "id": "73ac",
-      "name": "tylenol",
-      "dose": "50",
-      "recurring": false
-    },
-    {
-      "id": "627b",
-      "name": "Tylenol",
-      "dose": "50",
-      "recurring": true
-    },
-    {
-      "id": "6581",
-      "name": "tylenol",
-      "recurring": true
-    },
-    {
-      "id": "4229",
-      "name": "tylenol",
-      "recurring": true
-    },
-    {
-      "id": "9c3b",
-      "name": "tylenol",
-      "recurring": true
-    },
-    {
-      "id": "db0e",
-      "name": "tylenol",
-      "recurring": true
-    },
-    {
-      "id": "0ca5",
-      "name": "tylenol",
-      "dose": "50",
-      "recurring": true
-    },
-    {
-      "id": "e5a2",
-      "name": "",
-      "dose": "",
-      "recurring": false
-    },
-    {
-      "id": "8ea1",
-      "name": "tylenol",
-      "dose": "50",
-      "recurring": true
-    },
-    {
-      "id": "f9ac",
-      "name": "tylenol",
-      "dose": "50",
-      "recurring": true
+      "id": "2024-03-09",
+      "details": {
+        "flow": "",
+        "intensity": "",
+        "selectedOptions": [
+          "Heavy",
+          "Happy",
+          "Body Ache"
+        ],
+        "medications": [
+          {
+            "name": "VeryHappyPill",
+            "dose": "88",
+            "recurring": false
+          },
+          {
+            "name": "VeryHappyPill2",
+            "dose": "9",
+            "recurring": true
+          }
+        ]
+      }
     }
   ]
 }

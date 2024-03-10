@@ -1,11 +1,18 @@
 import React, { useState } from "react";
-import styles from "../DataPage.module.css"
-
+import styles from "../DataPage.module.css";
+import axios from "axios";
 
 const AddEntryPage = () => {
   const [flow, setFlow] = useState("");
   const [intensity, setIntensity] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [date, setDate] = useState("");
+
+  // States for managing medication inputs
+  const [medicationName, setMedicationName] = useState('');
+  const [medicationDose, setMedicationDose] = useState('');
+  const [medicationRecurring, setMedicationRecurring] = useState(false);
+  const [medications, setMedications] = useState([]);
 
   const handleFlowChange = (event) => {
     setFlow(event.target.value);
@@ -26,9 +33,34 @@ const AddEntryPage = () => {
   };
 
   const handleDoneClick = () => {
-    const data = { selectedOptions };
-    console.log(JSON.stringify(data));
-    // You can save the JSON object or send it to a server here
+    // Ensure the date is not empty
+    if (!date) {
+      console.error('Date is required');
+      return;
+    }
+
+    const entryData = {
+      id: date, // Use date as the unique identifier for each entry
+      details: {
+        flow,
+        intensity,
+        selectedOptions,
+        medications,
+      },
+    };
+
+    axios.post('http://localhost:3001/notes', entryData)
+        .then(response => {
+          console.log('Data saved:', response.data);
+          // Here you can implement post-save logic, e.g., clearing form fields, showing success message, etc.
+        })
+        .catch(error => {
+          console.error('There was an error saving the entry:', error);
+        });
+  };
+
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
   };
 
   const checkboxes = [
@@ -69,8 +101,39 @@ const AddEntryPage = () => {
 
   ];
 
+  const addMedication = (event) => {
+    event.preventDefault(); // Prevent form submission causing page reload
+
+    // Temporary addition logic (replace with axios call to server as needed)
+    const newMedication = {
+      name: medicationName,
+      dose: medicationDose,
+      recurring: medicationRecurring
+    };
+
+    // Add the new medication to the state
+    setMedications([...medications, newMedication]);
+
+    // Reset medication input fields
+    setMedicationName('');
+    setMedicationDose('');
+    setMedicationRecurring(false);
+  };
+
   return (
       <div style={{color: "#6868AC", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+        {/* Date Input */}
+        <div style={{marginBottom: "1cm", marginLeft: "0.5cm"}}>
+          <label htmlFor="date" style={{fontSize: "1em", fontWeight: "bold", color: "white"}}>Date:</label>
+          <input
+              type="date"
+              id="date"
+              value={date}
+              onChange={handleDateChange}
+              style={{marginLeft: "10px"}}
+          />
+        </div>
+
         {/* Flow 1 */}
         <div style={{
           fontSize: "1.2em",
@@ -170,6 +233,41 @@ const AddEntryPage = () => {
           </tbody>
         </table>
 
+        {/* Medication input form */}
+        <form onSubmit={addMedication}>
+          <input
+              type="text"
+              placeholder="Medication Name"
+              value={medicationName}
+              onChange={(e) => setMedicationName(e.target.value)}
+              required
+          />
+          <input
+              type="text"
+              placeholder="Dose"
+              value={medicationDose}
+              onChange={(e) => setMedicationDose(e.target.value)}
+              required
+          />
+          <label>
+            Recurring:
+            <input
+                type="checkbox"
+                checked={medicationRecurring}
+                onChange={(e) => setMedicationRecurring(e.target.checked)}
+            />
+          </label>
+          <button type="submit">Add Medication</button>
+        </form>
+
+        {/* Display added medications */}
+        {medications.length > 0 && (
+            <ul>
+              {medications.map((med, index) => (
+                  <li key={index}>{`${med.name}, ${med.dose}, Recurring: ${med.recurring ? 'Yes' : 'No'}`}</li>
+              ))}
+            </ul>
+        )}
         <div style={{display: "flex", justifyContent: "flex-end", marginRight: "10px"}}>
           <button onClick={handleDoneClick}>Done</button>
         </div>
