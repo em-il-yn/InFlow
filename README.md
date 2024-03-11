@@ -1,8 +1,3 @@
-# React + Vite
+# InFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+InFlow is an app designed to empower women by offering a platform to track their health, particularly focusing on pain levels and medication impacts. Users can log their daily health data, including pain levels, medication intake, and any side effects. InFlow analyzes this data to provide insights into how different medications affect pain levels over time, helping users and healthcare providers make informed decisions about treatment plans.
